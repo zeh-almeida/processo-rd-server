@@ -1,0 +1,42 @@
+pt-BR:
+  activerecord:
+    models:
+      api_key:
+        one: Chave API
+        other: Chaves API
+
+      visitor:
+        one: Visitante
+        other: Visitantes
+
+      visitation:
+        one: Visita
+        other: Visitas
+
+    attributes:
+      api_key:
+        id: ID
+        key: Chave
+        created_at: Criado em
+        updated_at: Última atualização
+
+      visitor:
+        id: ID
+        address: Endereço
+        email: E-mail
+        created_at: Criado em
+        updated_at: Última atualização
+
+      visitation:
+        id: ID
+        address: Endereço
+        visitor_id: Visitante
+        visitor: Visitante
+        created_at: Criado em
+        updated_at: Última atualização
+
+
+    errors:
+      models:
+        api_keys:
+          key_not_found: Chave de API não encontrada

@@ -1,0 +1,5 @@
+
+<%= filter_form(visitor_visitations_path(@visitor_id)) do %>
+  <%= label_tag( :address_filter, t('activerecord.attributes.visitation.address'), class: 'col-sm-1' ) %>
+  <%= text_field_tag( :by_address, params[:by_address], placeholder: t('activerecord.attributes.visitation.address'), id: :by_address, class: 'col-sm-11' ) %>
+<% end %>

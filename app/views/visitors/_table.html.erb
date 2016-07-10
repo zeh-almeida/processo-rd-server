@@ -1,0 +1,18 @@
+
+<table id="data-table-command" data-toggle="bootgrid" class="table table-striped table-vmiddle bootgrid-table">
+  <thead>
+    <tr>
+      <th data-column-id="email" data-identifier="true"><%= t('activerecord.attributes.visitor.email')      %></th>
+      <th data-column-id="created_at"                  ><%= t('activerecord.attributes.visitor.created_at') %></th>
+      <th data-column-id="updated_at"                  ><%= t('activerecord.attributes.visitor.updated_at') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @visitors.each do |visitor|
+      visitor_table_item(visitor)
+    end %>
+  </tbody>
+</table>
+
+<%= pagination_footer( @visitors ) %>

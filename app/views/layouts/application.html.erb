@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="utf-8" http-equiv="encoding">
+    <meta name="author" content="Zeh">
+
+    <%= stylesheet_link_tag    'application', media: 'all', data: { 'turbolinks-track': true } %>
+    <%= javascript_include_tag 'application', data: { 'turbolinks-track': true } %>
+    <%= csrf_meta_tags %>
+
+    <title>RD-Server</title>
+  </head>
+
+  <body>
+    <%= render 'shared/flash_messages' %>
+    <%= yield %>
+  </body>
+</html>
