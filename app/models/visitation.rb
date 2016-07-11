@@ -17,4 +17,6 @@ class Visitation < ActiveRecord::Base
 
   scope :by_visitor, -> visitor { where(visitor_id: visitor) }
   scope :by_address, -> address { where('unaccent(visitations.address) ILIKE ?', "%#{ address }%" ) }
+
+  scope :in_time, -> from, to { where(time: from..to) }
 end

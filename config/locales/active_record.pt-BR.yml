@@ -32,6 +32,7 @@ pt-BR:
         address: Endereço
         visitor_id: Visitante
         visitor: Visitante
+        time: Feita em
         created_at: Criado em
         updated_at: Última atualização
 

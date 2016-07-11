@@ -67,7 +67,7 @@ module ApplicationHelper
   end
 
   def command_button( path, row_id, message, additional = { } )
-    options = { remote: false, role: :get, target: '_self', klass: '', confirm: false, data: { } }.merge( additional )
+    options = { remote: false, role: :get, target: '_self', klass: '', confirm: false, text: '', data: { } }.merge( additional )
 
     role             = options[:role]
     icon             = options[:icon]
@@ -81,17 +81,19 @@ module ApplicationHelper
 
     if path.present?
       link_to path, remote: is_remote, data: data_params, target: options[:target], method: role do
-        concat( command_button_item( klass, additional_klass, icon, data_params ) )
+        concat( command_button_item( klass, additional_klass, icon, options[:text], data_params ) )
       end
 
     else
-      command_button_item( klass, additional_klass, icon, data_params )
+      command_button_item( klass, additional_klass, icon, text, data_params )
     end
   end
 
-  def command_button_item( klass, additional_klass, icon, data )
+  def command_button_item( klass, additional_klass, icon, text, data )
+    text = " #{text}" if text.present?
+    
     button_tag( role: 'button', type: 'button', class: "btn btn-primary #{ klass } #{ additional_klass }", data: data ) do
-      content_tag( :span, '', class: icon )
+      content_tag( :span, text, class: icon )
     end
   end
 

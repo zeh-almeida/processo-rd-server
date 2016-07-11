@@ -7,11 +7,14 @@
       <%= form.input :updated_at, as: :date,   required: true, disabled: true, wrapper_html: { class: 'col-sm-6' }  %>
     </div>
 
-    <div id="table-visitations" class="col-sm-12">
+    <div id="table-visitation" class="col-sm-12">
     </div>
 
     <div class="col-sm-12">
-      <%= show_button( visitor_visitations_path(visitor_id: @visitor.id), 0, '', {remote: true}) %>
+      <%= show_button( visitor_visitations_path(visitor_id: @visitor.id), 0,
+                       t('activerecord.models.visitation', count: 2),
+                       {text: t('simple_form.show', message: t('activerecord.models.visitation', count: 2)),
+                        remote: true}) %>
     </div>
   </div>
 <% end %>

@@ -3,15 +3,16 @@
   <thead>
     <tr>
       <th data-column-id="address" data-identifier="true"><%= t('activerecord.attributes.visitation.address')    %></th>
+      <th data-column-id="created_at"                    ><%= t('activerecord.attributes.visitation.time')       %></th>
       <th data-column-id="created_at"                    ><%= t('activerecord.attributes.visitation.created_at') %></th>
       <th data-column-id="updated_at"                    ><%= t('activerecord.attributes.visitation.updated_at') %></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @visitations.each do |visitation|
-      visitation_table_item(visitation)
-    end %>
+    <% @visitations.each do |visitation| %>
+      <%= visitation_table_item(visitation) %>
+    <% end %>
   </tbody>
 </table>
 
