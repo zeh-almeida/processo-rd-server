@@ -104,38 +104,4 @@ RSpec.describe VisitorsController, type: :controller do
       end
     end
   end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      it "assigns the desired visitor as @visitor" do
-        attributes = existing_visitor.attributes.merge(email: FFaker::Internet.email)
-        put :update, {format: :json, api_key: api_key.key, id: existing_visitor.id, visitor: attributes}
-
-        expect(assigns(:visitor)).to be_a(Visitor)
-        expect(assigns(:visitor)).to be_persisted
-      end
-    end
-
-    context "with invalid params" do
-      it "returns the errors in the model" do
-        attributes = existing_visitor.attributes.merge(email: '')
-        put :update, {format: :json, api_key: api_key.key, id: existing_visitor.id, visitor: attributes}
-
-        test_visitor = Visitor.new(attributes)
-        test_visitor.valid?
-
-        expect(response.body).to eq(test_visitor.to_json)
-      end
-
-      it "fails without API Key" do
-        put :update, {format: :json, id: existing_visitor.id, api_key: '', visitor: valid_attributes}
-        expect(response).to have_http_status(401)
-      end
-
-      it "fails with wrong API Key" do
-        put :update, {format: :json, id: existing_visitor.id, api_key: '0', visitor: valid_attributes}
-        expect(response).to have_http_status(401)
-      end
-    end
-  end
 end

@@ -9,9 +9,9 @@
   </thead>
 
   <tbody>
-    <% @visitors.each do |visitor|
-      visitor_table_item(visitor)
-    end %>
+    <% @visitors.each do |visitor| %>
+      <%= visitor_table_item(visitor) %>
+    <% end %>
   </tbody>
 </table>
 

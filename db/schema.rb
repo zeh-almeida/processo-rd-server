@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160710145205) do
   create_table "visitations", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "visitor_id", :null=>false
     t.citext   "address",    :null=>false
+    t.datetime "time",       :null=>false
     t.datetime "created_at", :null=>false
     t.datetime "updated_at", :null=>false
   end

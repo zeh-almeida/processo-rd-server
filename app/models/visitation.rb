@@ -10,8 +10,8 @@
 #
 
 class Visitation < ActiveRecord::Base
-  validates :visitor_id, presence: true
   validates :address, presence: true
+  validates :time,    presence: true
 
   belongs_to :visitor, touch: true
 

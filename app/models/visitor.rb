@@ -10,7 +10,7 @@
 
 class Visitor < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
-  has_many :visitations
+  has_many :visitations, dependent: :destroy
 
   scope :by_email, -> email { where('visitors.email ILIKE ?', "%#{ email }%" ) }
 

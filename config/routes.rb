@@ -1,6 +1,6 @@
 
 Rails.application.routes.draw do
-  resources :visitors, except: [:new, :edit, :destroy] do
+  resources :visitors, only: [:index, :show, :create] do
     resources :visitations, only: [:index]
   end
 

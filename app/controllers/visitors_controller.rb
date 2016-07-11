@@ -1,6 +1,8 @@
 class VisitorsController < ApplicationController
-  before_action :set_visitor,  only: [:show, :update]
-  before_action :validate_api, only: [:create, :update]
+  protect_from_forgery with: :exception, except: [:create]
+
+  before_action :set_visitor,  only: [:show]
+  before_action :validate_api, only: [:create]
 
   has_scope :by_email
 
@@ -31,17 +33,16 @@ class VisitorsController < ApplicationController
   # POST /visitors
   # POST /visitors.json
   def create
-    @visitor = Visitor.new(visitor_params)
+    @visitor = Visitor.by_email(visitor_params[:email]).first
+    binding.pry
+
+    if @visitor.present?
+      @visitor.attributes = visitor_params
+    else
+      @visitor = Visitor.new(visitor_params)
+    end
 
     respond_with @visitor, status: @visitor.save ? :created : :unprocessable_entity do |format|
-      format.json{ render json: @visitor.to_json }
-    end
-  end
-
-  # PATCH/PUT /visitors/1
-  # PATCH/PUT /visitors/1.json
-  def update
-    respond_with @visitor, status: @visitor.update(visitor_params) ? :accepted : :unprocessable_entity do |format|
       format.json{ render json: @visitor.to_json }
     end
   end
@@ -54,7 +55,7 @@ class VisitorsController < ApplicationController
 
     def visitor_params
       params.require(:visitor)
-            .permit(:email, visitations_attributes: [ :id, :address, :visitor_id])
+            .permit(:email, visitations_attributes: [ :id, :address, :time])
     end
 
     def validate_api
