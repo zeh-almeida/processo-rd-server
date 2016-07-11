@@ -34,7 +34,6 @@ class VisitorsController < ApplicationController
   # POST /visitors.json
   def create
     @visitor = Visitor.by_email(visitor_params[:email]).first
-    binding.pry
 
     if @visitor.present?
       @visitor.attributes = visitor_params

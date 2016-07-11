@@ -71,7 +71,6 @@ gem 'active_model_serializers', '~> 0.10.0.rc2'
 group :development do
   # Add a comment summarizing the current schema
   gem 'annotate'
-  gem 'responders', '~> 2.0'
 
   # Checks SQL queries' health
   gem 'bullet'
