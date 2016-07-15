@@ -91,7 +91,7 @@ module ApplicationHelper
 
   def command_button_item( klass, additional_klass, icon, text, data )
     text = " #{text}" if text.present?
-    
+
     button_tag( role: 'button', type: 'button', class: "btn btn-primary #{ klass } #{ additional_klass }", data: data ) do
       content_tag( :span, text, class: icon )
     end
